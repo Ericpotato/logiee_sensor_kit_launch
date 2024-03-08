@@ -1,11 +1,11 @@
 <launch>
-  <arg name="launch_driver" default="true"/>
+  <arg name="launch_driver" default="false"/>
 
   <group>
-      <include file="$(find-pkg-share microstrain_inertial_driver)/launch/microstrain_launch.py">
+    <include file="$(find-pkg-share microstrain_inertial_driver)/launch/microstrain_launch.py">
       <arg name="namespace" value=""/>
       <arg name="configure" value="true"/>
-      <arg name="activate" value="true"/>
+      <arg name="activate" value="false"/>
     </include>
   </group>
 
@@ -14,7 +14,6 @@
 
     <arg name="imu_raw_name" default="data"/>
     <arg name="imu_corrector_param_file" default="$(find-pkg-share individual_params)/config/$(var vehicle_id)/logiee_sensor_kit/imu_corrector.param.yaml"/>
-    
     <include file="$(find-pkg-share imu_corrector)/launch/imu_corrector.launch.xml">
       <arg name="input_topic" value="$(var imu_raw_name)"/>
       <arg name="output_topic" value="imu_data"/>
